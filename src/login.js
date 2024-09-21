@@ -2,7 +2,8 @@
 const loginArea = document.querySelector("#login-area");
 const loginForm = document.querySelector("#login-form");
 const loginInput = document.querySelector("#login-form input");
-const greetingName = document.querySelector("#greeting-area h1");
+const greetingText = document.querySelector("#greeting-area h1");
+const todoArea = document.querySelector("#todo-area");
 
 const HIDDEN_CLASSNAME = "hidden"; 
 const USERNAME_KEY = "username";
@@ -16,14 +17,16 @@ function handleLogInSubmit(event) {
 }
 
 function showUsername(username) {
-    greetingName.innerText = `Have a Good Day,\n${username}`;
-    loginForm.classList.add(HIDDEN_CLASSNAME);
+    greetingText.innerText = `Have a Good Day,\n${username}`;
+    loginArea.classList.add(HIDDEN_CLASSNAME);
+    todoArea.classList.remove(HIDDEN_CLASSNAME);
 }
 
 const loggedUsername = localStorage.getItem(USERNAME_KEY);
 
 if (loggedUsername == null) {
-    loginForm.classList.remove(HIDDEN_CLASSNAME);
+    loginArea.classList.remove(HIDDEN_CLASSNAME);
+    todoArea.classList.add(HIDDEN_CLASSNAME);
     loginForm.addEventListener("submit", handleLogInSubmit);
 } else {
     showUsername(loggedUsername);

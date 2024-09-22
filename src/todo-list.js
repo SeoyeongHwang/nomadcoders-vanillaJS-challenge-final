@@ -17,20 +17,23 @@ function deleteTodo(event) {
     li.remove();
     todos = todos.filter(todo => todo.id !== parseInt(li.id));
     saveTodos();
+    console.log(li.id);
 }
 
 function showTodo(newTodo) {
     const li = document.createElement("li");
     li.id = newTodo.id;
 
-    const spand = document.createElement("span");
-    spand.innerText = newTodo.text;
+    const span = document.createElement("span");
+    span.innerText = newTodo.text;
 
     const button = document.createElement("button");
-    button.innerText = "x";
+    button.innerText = "X";
+    //svg 아이콘 사용하면 이벤트 버블링 발생... 잠시 보류
+    //button.innerHTML = '<svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><line x1="18" y1="6" x2="6" y2="18"></line><line x1="6" y1="6" x2="18" y2="18"></line></svg>';
     button.addEventListener("click", deleteTodo);
 
-    li.appendChild(spand);
+    li.appendChild(span);
     li.appendChild(button);
     todoList.appendChild(li);
 }

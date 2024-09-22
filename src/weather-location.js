@@ -23,7 +23,7 @@ function onGeoFound(position) {
 }
 
 function onGeoError() {
-    weatherContainer.innerText = `Anywhere on Earth`;
+    weatherContainer.innerText = 'Somewhere on earth';
 
 }
 
